@@ -1,5 +1,7 @@
 package edu.estatuas.stockx;
 
+import edu.estatuas.stockx.item.*;
+
 /**
  * StockX nació en Detroit, y allí siguen haciendo
  * las cosas a la manera tradicional, 
@@ -33,7 +35,6 @@ public class Stockx {
 
         Item sneaker = new Sneaker("555088-105", "Jordan 1 Retro High Dark Mocha");
         System.out.println(Stockx.draw(sneaker));
-
     }
 
     public static String draw(Item sneaker) {
@@ -47,7 +48,6 @@ public class Stockx {
         "\t\t" + "J_/___\"=> __/`\\" + "\n" +
         "\t\t" + "|=====;__/___./" + "\n" +
         "\t\t" + "\'-\'-\'-\"\"\"\"\"\"\"`" + "\n" +
-        
         "\t" + sneaker.toString() + "\n" +
         "\t\tlast sale: " + sneaker.getSale();
     }
