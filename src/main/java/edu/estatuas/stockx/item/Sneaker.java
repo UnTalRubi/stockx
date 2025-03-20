@@ -52,5 +52,7 @@ public class Sneaker implements Item{
     public String toString(){
         return getName() + "\n\t\t" + getStyle();
     }
+
+    
 }
 

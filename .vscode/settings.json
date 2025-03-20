@@ -1,6 +1,7 @@
 {
     "java.configuration.updateBuildConfiguration": "interactive",
     "conventionalCommits.scopes": [
-        "README"
+        "README",
+        "Stockx"
     ]
 }
