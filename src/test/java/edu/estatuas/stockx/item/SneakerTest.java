@@ -32,21 +32,32 @@ public class SneakerTest
         assertEquals(40, sneaker.getBid());
     }
 
-
     @Test
     public void testToString(){
         assertEquals("Zapas\n\t\t123-ABC", sneaker.toString());
     }
 
     @Test
-    public void testOffers(){
+    public void testOffersBid(){
     
         sneaker.add(new Bid ("40", 150));
         sneaker.add(new Bid ("41", 200));
         sneaker.add(new Bid ("37", 100));
-        sneaker.offers();
 
+        assertEquals(3, sneaker.offers().size());
         assertEquals("37", sneaker.offers().get(2).size());
         assertEquals(200, sneaker.offers().get(1).value());
+        
+    }
+
+    @Test
+    public void testOffersAsk(){
+    
+        sneaker.add(new Ask ("38", 250));
+        sneaker.add(new Ask ("43", 320));
+
+        assertEquals(2, sneaker.offers().size());
+        assertEquals("43", sneaker.offers().get(1).size());
+        assertEquals(250, sneaker.offers().get(0).value());
     }
 }
