@@ -49,7 +49,6 @@ public class Stockx {
         sneaker.add(new Bid("9.5", 479));
         sneaker.add(new Bid("13", 338));
         sneaker.add(new Bid("9.5", 480));
-        
     }
 
     public static String draw(Item sneaker) {

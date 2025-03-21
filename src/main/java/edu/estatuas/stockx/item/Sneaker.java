@@ -1,14 +1,18 @@
 package edu.estatuas.stockx.item;
 
-public class Sneaker implements Item{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Sneaker implements Item {
 
     private String style;
     private String name;
     private int sale;
     private int ask;
     private int bid;
+    private List<Offer> offers = new ArrayList<>();
 
-    public Sneaker(String style, String name){
+    public Sneaker(String style, String name) {
         this.style = style;
         this.name = name;
         this.sale = 0;
@@ -16,43 +20,45 @@ public class Sneaker implements Item{
         this.bid = 0;
     }
 
-    public String getStyle(){
+    public String getStyle() {
         return this.style;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public int getSale(){
+    public int getSale() {
         return this.sale;
     }
 
-    public void setSale(int sale){
+    public void setSale(int sale) {
         this.sale = sale;
     }
 
-    public int getBid(){
+    public int getBid() {
         return this.bid;
     }
 
-    public void setBid(int bid){
+    public void setBid(int bid) {
         this.bid = bid;
     }
 
-    public int getAsk(){
+    public int getAsk() {
         return this.ask;
     }
 
-    public void setAsk(int ask){
+    public void setAsk(int ask) {
         this.ask = ask;
     }
 
+    public List<Offer> offers() {
+        return null;
+    }
+
     @Override
-    public String toString(){
+    public String toString() {
         return getName() + "\n\t\t" + getStyle();
     }
 
-    
 }
-
