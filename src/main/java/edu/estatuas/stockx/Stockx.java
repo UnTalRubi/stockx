@@ -1,6 +1,9 @@
 package edu.estatuas.stockx;
 
-import edu.estatuas.stockx.item.*;
+import edu.estatuas.stockx.item.Bid;
+import edu.estatuas.stockx.item.Item;
+import edu.estatuas.stockx.item.Sneaker;
+
 
 /**
  * StockX nació en Detroit, y allí siguen haciendo
@@ -41,7 +44,6 @@ public class Stockx {
          * y añadirlas a la zapatilla
          * en sus offers.
          */
-
         
         Bid bid = new Bid("13", 550);
         sneaker.add(bid);
