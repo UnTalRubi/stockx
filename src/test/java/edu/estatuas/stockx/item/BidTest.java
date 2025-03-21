@@ -1,11 +1,7 @@
-package edu.estatuas;
+package edu.estatuas.stockx.item;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import edu.estatuas.stockx.item.Bid;
 
 public class BidTest {
     

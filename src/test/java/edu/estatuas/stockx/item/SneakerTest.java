@@ -1,11 +1,8 @@
-package edu.estatuas;
+package edu.estatuas.stockx.item;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import edu.estatuas.stockx.item.Sneaker;
 
 public class SneakerTest 
 {
@@ -39,5 +36,17 @@ public class SneakerTest
     @Test
     public void testToString(){
         assertEquals("Zapas\n\t\t123-ABC", sneaker.toString());
+    }
+
+    @Test
+    public void testOffers(){
+    
+        sneaker.add(new Bid ("40", 150));
+        sneaker.add(new Bid ("41", 200));
+        sneaker.add(new Bid ("37", 100));
+        sneaker.offers();
+
+        assertEquals("37", sneaker.offers().get(2).size());
+        assertEquals(200, sneaker.offers().get(1).value());
     }
 }
