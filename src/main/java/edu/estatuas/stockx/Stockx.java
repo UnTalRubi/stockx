@@ -1,8 +1,6 @@
 package edu.estatuas.stockx;
 
-import edu.estatuas.stockx.item.Bid;
-import edu.estatuas.stockx.item.Item;
-import edu.estatuas.stockx.item.Sneaker;
+import edu.estatuas.stockx.item.*;
 
 
 /**
@@ -51,6 +49,19 @@ public class Stockx {
         sneaker.add(new Bid("9.5", 479));
         sneaker.add(new Bid("13", 338));
         sneaker.add(new Bid("9.5", 480));
+
+        /**
+         * Crear asks
+         * y añadirlas a la zapatilla
+         * en sus offers.
+         */
+
+        Ask ask = new Ask("13", 288);
+        sneaker.add(ask);
+        sneaker.add(new Ask("6", 600));
+        sneaker.add(new Ask("9.5", 333));
+        sneaker.add(new Ask("9.5", 340));
+        sneaker.add(new Ask("13", 330));
     }
 
     public static String draw(Item sneaker) {
