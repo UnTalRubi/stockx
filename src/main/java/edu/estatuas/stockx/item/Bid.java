@@ -20,4 +20,9 @@ public class Bid implements Offer{
     public int value(){
         return this.bid;
     }
+
+    @Override
+    public String toString(){
+        return "\t\s\s\s\s" + this.size() + "\t\t\s\s\s" + this.value() + "\n";
+    }
 }
