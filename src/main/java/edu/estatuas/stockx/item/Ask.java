@@ -21,4 +21,8 @@ public class Ask implements Offer {
         return this.ask;
     }
 
+    @Override
+    public String toString(){
+        return "\t\s\s\s\s" + this.size() + "\t\t\s\s\s" + this.value() + "\n";
+    }
 }
