@@ -38,6 +38,20 @@ public class SneakerTest
     }
 
     @Test
+    public void testOffers(){
+    
+        sneaker.add(new Bid ("40", 150));
+        sneaker.add(new Bid ("41", 200));
+        sneaker.add(new Bid ("37", 100));
+        sneaker.add(new Ask ("38", 250));
+        sneaker.add(new Ask ("43", 320));
+
+        assertEquals(5, sneaker.offers().size());
+        assertEquals("43", sneaker.offers().get(sneaker.offers().size()-1).size());
+        assertEquals(150, sneaker.offers().get(0).value());
+    }
+
+    @Test
     public void testOffersBid(){
     
         sneaker.add(new Bid ("40", 150));
