@@ -3,7 +3,7 @@ package edu.estatuas.stockx.item;
 public class Ask implements Offer {
 
     private String size;
-    private int ask;
+    private Integer ask;
     
     public Ask (String size, int ask){
         
@@ -18,11 +18,16 @@ public class Ask implements Offer {
 
     @Override
     public int value(){
-        return this.ask;
+        return this.ask.intValue();
     }
 
     @Override
     public String toString(){
         return "\t\s\s\s\s" + this.size() + "\t\t\s\s\s" + this.value() + "\n";
+    }
+
+    @Override
+    public int compareTo(Offer ask){
+        return this.ask.compareTo(ask.value());
     }
 }

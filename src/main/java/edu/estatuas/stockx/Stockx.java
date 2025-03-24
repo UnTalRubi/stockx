@@ -1,11 +1,16 @@
 package edu.estatuas.stockx;
 
+import java.util.List;
+
 import edu.estatuas.stockx.criteria.Asks;
 import edu.estatuas.stockx.criteria.Bids;
+import edu.estatuas.stockx.criteria.MaxBid;
+import edu.estatuas.stockx.criteria.MinAsk;
 import edu.estatuas.stockx.criteria.Criteria;
 import edu.estatuas.stockx.item.Ask;
 import edu.estatuas.stockx.item.Bid;
 import edu.estatuas.stockx.item.Item;
+import edu.estatuas.stockx.item.Offer;
 import edu.estatuas.stockx.item.Sneaker;
 
 
@@ -88,6 +93,42 @@ public class Stockx {
         Criteria asks = new Asks();
         System.out.println("\n\t\t All ASKS");
         asks.checkCriteria(sneaker).forEach(System.out::print);
+
+        /**
+         * Muestra la bid maxima
+         * de la zapatilla. 
+         * 
+         * Crea el filtro MaxBid que filtra
+         * el maximo de las bids de la zapatilla.
+         * Devuelve la bid maxima como unico
+         * elemento de una lista de offers.
+         * 
+         * Guarda esta bid maxima en la
+         * propiedad bid de sneaker.
+         */
+        
+        Criteria maxBid = new MaxBid();
+        List<Offer> maximum = maxBid.checkCriteria(sneaker);
+        sneaker.setBid(maximum.isEmpty()? 0 : maximum.get(0).value());
+        System.out.println(Stockx.draw(sneaker));
+
+        /**
+         * Muestra la ask minima
+         * de la zapatilla. 
+         * 
+         * Crea el filtro MinAsk que filtra
+         * el minimo de las asks de la zapatilla.
+         * Devuelve la ask minima como unico
+         * elemento de una lista de offers.
+         * 
+         * Guarda esta ask minima en la propiedad
+         * ask de sneaker.
+         */
+
+        Criteria minAsk = new MinAsk();
+        List<Offer> minimum = minAsk.checkCriteria(sneaker);
+        sneaker.setAsk(minimum.isEmpty()? 0 : minimum.get(0).value());
+        System.out.println(Stockx.draw(sneaker));
     }
 
     public static String draw(Item sneaker) {

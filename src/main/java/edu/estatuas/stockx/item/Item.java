@@ -2,7 +2,7 @@ package edu.estatuas.stockx.item;
 
 import java.util.List;
 
-public interface Item {
+public interface Item{
 
     int getBid();
     int getAsk();
