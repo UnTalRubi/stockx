@@ -3,14 +3,15 @@ package edu.estatuas.stockx.criteria;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.estatuas.stockx.item.Sale;
 import edu.estatuas.stockx.item.Item;
 import edu.estatuas.stockx.item.Offer;
+import edu.estatuas.stockx.item.Sale;
 
-public class Sales implements Criteria{
+public class LastSale implements Criteria{
 
     @Override
-    public List<Offer> checkCriteria(Item sneaker) {
+    public List<Offer> checkCriteria(Item sneaker){
+        
         List<Offer> offersSale = new ArrayList<>();
         for (Offer offer : sneaker.offers()){
 
@@ -18,6 +19,6 @@ public class Sales implements Criteria{
                 offersSale.add(offer);
             }
         }
-        return offersSale;
+        return sneaker.offers().reversed();
     }
 }
