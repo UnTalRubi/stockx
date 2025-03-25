@@ -197,6 +197,28 @@ public class Stockx {
         bids = new Bids();
         Criteria andSizeBids = new AndCriteria(size, bids);
         andSizeBids.checkCriteria(sneaker).forEach(System.out::print);
+
+        /**
+         * Crea un filtro Max(size, bids)
+         * que devuelva el maximo de las bids
+         * de una talla.
+         */
+
+        Criteria sizeMaxBid = new Max(size, bids);
+        List<Offer> sizeBid = sizeMaxBid.checkCriteria(sneaker);
+        sneaker.setBid(sizeBid.isEmpty()? 0 : sizeBid.get(0).value());
+        System.out.println("\n\t\t MAX BID 9.5 US: " + sneaker.getBid());
+
+        /**
+         * Crea un filtro Min(size, asks)
+         * que devuelva el minimo de las asks
+         * de una talla.
+         */
+
+        Criteria sizeMinAsk = new Min(size, asks);
+        List<Offer> sizeAsk = sizeMinAsk.checkCriteria(sneaker);
+        sneaker.setAsk(sizeAsk.isEmpty()? 0 : sizeAsk.get(0).value());
+        System.out.println("\n\t\t MIN ASK 9.5 US: " + sneaker.getAsk());
     }
 
     public static String draw(Item sneaker) {
