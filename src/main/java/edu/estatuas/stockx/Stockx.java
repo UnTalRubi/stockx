@@ -159,6 +159,11 @@ public class Stockx {
         List<Offer> actualSale = lastSale.checkCriteria(sneaker);
         sneaker.setSale(actualSale.isEmpty()? 0 : actualSale.get(0).value());
         System.out.println(Stockx.draw(sneaker));
+
+        /**
+         * Mostrar info de la zapatilla 
+         * en la talla 9.5
+         */
     }
 
     public static String draw(Item sneaker) {
