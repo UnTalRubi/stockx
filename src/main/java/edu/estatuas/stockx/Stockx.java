@@ -2,16 +2,8 @@ package edu.estatuas.stockx;
 
 import java.util.List;
 
-import edu.estatuas.stockx.criteria.Asks;
-import edu.estatuas.stockx.criteria.Bids;
-import edu.estatuas.stockx.criteria.MaxBid;
-import edu.estatuas.stockx.criteria.MinAsk;
-import edu.estatuas.stockx.criteria.Criteria;
-import edu.estatuas.stockx.item.Ask;
-import edu.estatuas.stockx.item.Bid;
-import edu.estatuas.stockx.item.Item;
-import edu.estatuas.stockx.item.Offer;
-import edu.estatuas.stockx.item.Sneaker;
+import edu.estatuas.stockx.criteria.*;
+import edu.estatuas.stockx.item.*;
 
 
 /**
@@ -129,6 +121,21 @@ public class Stockx {
         List<Offer> minimum = minAsk.checkCriteria(sneaker);
         sneaker.setAsk(minimum.isEmpty()? 0 : minimum.get(0).value());
         System.out.println(Stockx.draw(sneaker));
+
+        /**
+         * Añade ventas (sales) de 
+         * una zapatilla a sus offers.
+         * Las ventas se añaden segun fecha
+         * en la que se producen, de mas antigua
+         * a mas reciente.
+         */
+
+        Sale sale = new Sale("6", 356);
+        sneaker.add(sale);
+        sneaker.add(new Sale("9.5", 352));
+        sneaker.add(new Sale("9.5", 404));
+        sneaker.add(new Sale("13", 360));
+        sneaker.add(new Sale("13", 372));
     }
 
     public static String draw(Item sneaker) {
