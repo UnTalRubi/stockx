@@ -34,4 +34,13 @@ public class AsksTest {
         sneaker.setAsk(asks.checkCriteria(sneaker).get(0).value());
         assertEquals(288, sneaker.getAsk());
     }
+
+    @Test
+    public void checkCriteria_no_bids_Test() {
+        Sneaker sneaker = new Sneaker("555088-105", "Jordan 1");
+        Criteria minAsk = new MinAsk();
+        List<Offer> minimum = minAsk.checkCriteria(sneaker);
+        sneaker.setBid(minimum.isEmpty() ? 0 : minimum.get(0).value());
+        assertEquals(0, sneaker.getAsk());
+    }
 }
