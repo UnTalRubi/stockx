@@ -12,9 +12,6 @@ import edu.estatuas.stockx.item.Sneaker;
 
 public class MinAskTest {
 
-    private Sneaker sneaker;
-    Criteria minAsk = new MinAsk();
-
     @Test
     public void checkCriteria_bids_aks_Test() {
         Sneaker sneaker = new Sneaker("555088-105", "Jordan 1");
