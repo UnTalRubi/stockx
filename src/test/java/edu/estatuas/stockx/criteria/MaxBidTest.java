@@ -1,32 +1,56 @@
 package edu.estatuas.stockx.criteria;
 
+import java.util.List;
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import edu.estatuas.stockx.item.Ask;
 import edu.estatuas.stockx.item.Bid;
+import edu.estatuas.stockx.item.Offer;
 import edu.estatuas.stockx.item.Sneaker;
 
 public class MaxBidTest {
 
-    private Sneaker sneaker;
-    Criteria maxBid = new MaxBid();
-
-    @BeforeEach
-    public void createSneaker(){
-        sneaker = new Sneaker("132-JSD","Zapas");
-        sneaker.add(new Bid("12",123 ));
-        sneaker.add(new Bid("9,2", 420));
-        sneaker.add(new Bid("10", 211));
-        sneaker.add(new Bid("8", 100));
-        sneaker.add(new Bid("8,2", 90));
-
-    }
-    
     @Test
-    public void testMaxBid(){
+    public void checkCriteria_bids_Test() {
+        Sneaker sneaker = new Sneaker("555088-105", "Jordan 1");
+        sneaker.add(new Bid("5.5", 550));
+        sneaker.add(new Bid("4.5", 480));
+        sneaker.add(new Bid("5.5", 900));
+        sneaker.add(new Bid("6", 472));
 
-        assertEquals(420, maxBid.checkCriteria(sneaker).get(0).value());
+        Criteria maxBid = new MaxBid();
+        Optional<Offer> maxOpt = Optional.ofNullable(maxBid.checkCriteria(sneaker).get(0));
+        sneaker.setBid(maxOpt.isPresent() ? maxOpt.get().value() : 0);
+        assertEquals(900, sneaker.getBid());
     }
 
+    @Test
+    public void checkCriteria_bids_aks_Test() {
+        Sneaker sneaker = new Sneaker("555088-105", "Jordan 1");
+        sneaker.add(new Bid("5.5", 550));
+        sneaker.add(new Bid("4.5", 480));
+        sneaker.add(new Bid("5.5", 900));
+        sneaker.add(new Bid("6", 472));
+        sneaker.add(new Ask("15", 288));
+        sneaker.add(new Ask("13", 333));
+        sneaker.add(new Ask("14", 1000));
+        sneaker.add(new Ask("13", 341));
+
+        Criteria maxBid = new MaxBid();
+        Optional<Offer> maxOpt = Optional.ofNullable(maxBid.checkCriteria(sneaker).get(0));
+        sneaker.setBid(maxOpt.isPresent() ? maxOpt.get().value() : 0);
+        assertEquals(900, sneaker.getBid());
+    }
+
+    @Test
+    public void checkCriteria_no_bids_Test() {
+        Sneaker sneaker = new Sneaker("555088-105", "Jordan 1");
+        Criteria maxBid = new MaxBid();
+        List<Offer> maximum = maxBid.checkCriteria(sneaker);
+        sneaker.setBid(maximum.isEmpty() ? 0 : maximum.get(0).value());
+        assertEquals(0, sneaker.getBid());
+    }
 }
